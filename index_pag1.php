@@ -24,72 +24,71 @@
             <h2>Software</h2>
         </div>
 
-
         <div class="seccion">
-            <ul>Seguridad</ul>
-            <li>Ten siempre actualizado tu dispositivo con las últimas versiones de software,
-                esto puede protegerte de amenazas y ataques informáticos.</li>
-            <li>Usa contraseñas seguras, combinando letras, números y símbolos.</li>
-            <li>No te conectes a redes wifi públicas; no son seguras y puedes recibir un ataque.</li>
+            <h2>Seguridad</h2>
+            <ul>
+                <li>Mantén tu dispositivo actualizado con las últimas versiones de software para protegerte de amenazas y ataques informáticos.</li>
+                <li>Utiliza contraseñas seguras, combinando letras, números y símbolos.</li>
+                <li>Evita conectarte a redes Wi-Fi públicas, ya que no son seguras y pueden ser blanco de ataques.</li>
+                <li>Instala un antivirus, ya sea gratuito o de pago, para proteger tu dispositivo tanto a nivel local como en la red.</li>
+            </ul>
         </div>
+        
         <div class="seccion">
-            <ul>Mantenimiento</ul>
-            <li>Limpia periódicamente tu equipo y sus componentes; si está sucio puede no funcionar correctamente</li>
-            <li>Actualiza periódicamente los drivers de los dispositivos y componentes</li>
-            <li>Asegúrate de tener los equipos con la ventilación correcta.</li>
-        </div>
-        <div class="seccion">
-            <ul>Seguridad</ul>
-            <li>Ten instalado un antivirus; los hay tanto de pago como gratis, y te protegerá tanto a nivel local como en la red</li>
-            <li>Ten siempre actualizado tu dispositivo con las últimas versiones de software,
-                esto puede protegerte de amenazas y ataques informáticos.</li>
-        </div>
-
-
-
-        <div class="seccion">
-            <ul>Batería/Fuente de alimentación</ul>
-            <li>Mientras no uses tu dispositivo o no necesites cargarlo, déjalo desenchufado.
-                De esta manera alargarás su vida útil.</li>
-            <li>Para alargar el uso de batería, puedes bajar el brillo de la pantalla, cerrar apps que no
-                estés usando o apagar funciones que no uses como la ubicación, el bluetooth...</li>
-
-        </div>
-        <div class="seccion">
-            <ul>Rendimiento</ul>
-            <li>Si tu equipo no tiene la suficiente velocidad de respuesta, puedes considerar añadirle más memoria RAM
-                o un disco SSD (tienen más velocidad que los HHD).</li>
-            <li>También puedes deshabilitar funciones y servicios que no uses en tu equipo.</li>
+            <h2>Mantenimiento</h2>
+            <ul>
+                <li>Limpia periódicamente tu equipo y sus componentes; el polvo puede afectar su funcionamiento.</li>
+                <li>Actualiza regularmente los controladores de los dispositivos y componentes.</li>
+                <li>Asegúrate de que los equipos tengan una ventilación adecuada.</li>
+            </ul>
         </div>
 
         <div class="seccion">
-            <ul>Instalación y actualización</ul>
-            <li>Descarga e instala los programas de sitios fiables; en sitios no fiables pueden instalarte virus.</li>
-            <li>Habilita las actualizaciones automáticas de los programas y del equipo; las actualizaciones
-                también te protegen de ataques y aumentan el rendimiento de tu dispositivo.</li>
+            <h2>Batería/Fuente de alimentación</h2>
+            <ul>
+                <li>Desenchufa tu dispositivo cuando no lo estés usando o no necesites cargarlo para prolongar la vida útil de la batería.</li>
+                <li>Para extender el uso de la batería, reduce el brillo de la pantalla, cierra aplicaciones no utilizadas y desactiva funciones innecesarias como la ubicación y el Bluetooth.</li>
+            </ul>
         </div>
-
-    
 
         <div class="seccion">
-            <ul>Problemas comunes</ul>
-            <li>Activa las copias de seguridad de la información importante para evitar su pérdida.
-                Puede estropearse tanto software como hardware</li>
-            <li>Ten siempre limpias las zonas y componentes de ventilación para mantener la temperatura correcta.</li>
-        </div>
-        <div class="seccion">
-            <ul>Renovación</ul>
-            <li>Hay que estar pendiente del estado de los componentes, ya que si están en mal estado pueden 
-                perjudicar al resto de componentes.</li>
-            <li>Es recomendable cambiar cada 2 años la pasta térmica del procesador del ordenador.</li>
-        </div>
-        <div class="seccion">
-            <ul>Herramientas de diagnóstico</ul>
-            <li>Puedes ayudarte de programas y herramientas de diagnóstico para ver el estado de tu equipo.
-                Con ellas puedes mejorar su rendimiento o reparar problemas.</li>
+            <h2>Rendimiento</h2>
+            <ul>
+                <li>Si tu equipo es lento, considera agregar más memoria RAM o cambiar a un disco SSD, que es más rápido que un HDD.</li>
+                <li>Deshabilita funciones y servicios que no utilices en tu equipo.</li>
+            </ul>
         </div>
 
+        <div class="seccion">
+            <h2>Instalación y actualización</h2>
+            <ul>
+                <li>Descarga e instala programas solo desde sitios confiables para evitar virus.</li>
+                <li>Habilita las actualizaciones automáticas para mantener tu software y equipo protegidos y en buen rendimiento.</li>
+            </ul>
+        </div>
 
+        <div class="seccion">
+            <h2>Problemas comunes</h2>
+            <ul>
+                <li>Activa las copias de seguridad para proteger tu información importante en caso de fallos de software o hardware.</li>
+                <li>Mantén limpias las áreas y componentes de ventilación para evitar el sobrecalentamiento.</li>
+            </ul>
+        </div>
+
+        <div class="seccion">
+            <h2>Renovación</h2>
+            <ul>
+                <li>Revisa el estado de los componentes regularmente, ya que pueden afectar el rendimiento del equipo si están en mal estado.</li>
+                <li>Es recomendable cambiar la pasta térmica del procesador cada dos años.</li>
+            </ul>
+        </div>
+
+        <div class="seccion">
+            <h2>Herramientas de diagnóstico</h2>
+            <ul>
+                <li>Utiliza programas y herramientas de diagnóstico para evaluar el estado de tu equipo y mejorar su rendimiento o reparar problemas.</li>
+            </ul>
+        </div>
 
     </div>
 </body>
