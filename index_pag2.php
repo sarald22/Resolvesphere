@@ -16,7 +16,7 @@
 
         <div class="seccion">
             <h2>¿Cómo puedo crear un nuevo ticket?</h2>
-            <p><a href="login_clientes.php">Inicia sesión</a> con tu cuenta, haz clic en "Crear ticket", completa los datos solicitados y espera nuestra respuesta.</p>
+            <p><a href="login_clientes.php">Inicia sesión</a> con tu cuenta, haz clic en "Crear ticket", completa la información solicitada espera a que te respondamos.</p>
         </div>
 
         <div class="seccion">
@@ -25,13 +25,13 @@
         </div>
 
         <div class="seccion">
-            <h2>¿Qué información debo incluir al crear un ticket?</h2>
-            <p>Incluye un título (descripción breve del problema), categoría y una descripción detallada. También puedes adjuntar fotos.</p>
+            <h2>¿Qué información tengo que incluir al crear un ticket?</h2>
+            <p>Título (una descripción breve del problema), categoría y una descripción detallada; puedes añadir fotos.</p>
         </div>
 
         <div class="seccion">
-            <h2>¿Cómo puedo verificar el estado de mi ticket?</h2>
-            <p>Inicia sesión con tu cuenta de cliente y busca el ticket. Podrás ver el estado en el apartado "estado".</p>
+            <h2>¿Cómo puedo ver el estado de mi ticket?</h2>
+            <p>Inicia sesión en tu cuenta y busca el ticket; puedes ver su estado en el apartado "estado".</p>
         </div>
 
         <div class="seccion">
