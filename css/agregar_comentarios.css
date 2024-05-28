@@ -1,0 +1,115 @@
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+.contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.contenedor-ticket {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.encabezado-ticket {
+    background-color: #FFA07A;
+    color: #fff;
+    padding: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.detalles-ticket {
+    margin-bottom: 10px;
+}
+
+.contenedor-formulario {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.boton-enviar {
+    background-color: #FFA07A;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.boton-regresar {
+    background-color: #FF6347;
+    color: #fff;
+    padding: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.mensaje-exito {
+    background-color: #FFA07A;
+    color: #fff;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.mensaje-error {
+    background-color: #FF6347;
+    color: #fff;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.contenedor-comentarios {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contenedor-comentarios h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.comentario {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.comentario-fecha {
+    color: #888; 
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.comentario-usuario {
+    font-weight: bold; 
+    margin-bottom: 5px;
+}
+
+.comentario-texto {
+    margin-bottom: 10px;
+}
+
+.no-comentarios {
+    color: #888; 
+    margin-bottom: 10px;
+}

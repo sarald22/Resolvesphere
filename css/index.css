@@ -1,0 +1,82 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #bff8ff;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.cabecera {
+    background-image: url('../img/index6.png');
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    color: #fff;
+    height: 140px;
+    position: relative;
+}
+
+h1 {
+    color: #000080;
+}
+
+.barra-lateral {
+    float: left;
+    width: 200px;
+    background-color: #007bff;
+    height: 100vh;
+    color: #fff;
+    padding-top: 20px;
+}
+
+.barra-lateral a {
+    display: block;
+    padding: 10px;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.barra-lateral a:hover {
+    background-color: #0056b3;
+}
+
+.contenido {
+    margin-left: 220px;
+    padding: 20px;
+}
+
+button {
+    margin: 10px;
+    padding: 8px 16px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.1s ease, background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0px);
+}
+
+
+footer {
+    background-color: #f0f0f0;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.copyright {
+    font-size: 15px;
+    color: #666;
+}

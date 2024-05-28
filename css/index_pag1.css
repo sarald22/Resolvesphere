@@ -1,0 +1,98 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #4169e1;
+    margin-bottom: 30px;
+}
+
+.contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.seccion {
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 10px;
+    /*aquí se tiene que indicar cuántas columnas queremos añadir y el margen que queremos que tengan*/
+    flex: 1 1 calc(33.333% - 40px); 
+    box-sizing: border-box;
+}
+
+.seccion h2 {
+    color: #4169e1;
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 2px solid #4169e1;
+    padding-bottom: 10px;      
+}
+
+.seccion p {
+    color: #333333;
+}
+
+.seccion ul {
+    list-style-type: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: #4169e1;
+    padding: 0;
+}
+
+.seccion ul li {
+    margin-bottom: 10px;
+}
+
+a {
+    color: #4169e1;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 1000px) {
+    .seccion {
+        flex: 1 1 calc(50% - 40px);
+    }
+}
+
+@media (max-width: 600px) {
+    .seccion {
+        flex: 1 1 100%;
+    }
+}
+
+.boton-volver {
+    display: block;
+    width: 400px;
+    margin: 20px auto;
+    padding: 10px;
+    text-align: center;
+    background-color: #4169e1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-left: auto;
+}
+
+.boton-volver:hover {
+    background-color: #001f3f;
+}

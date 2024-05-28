@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <div class="cabecera">
+        <div style="position: absolute; top: 10px; right: 10px;">
+            <button id="modoOscuroBtn">Modo Oscuro</button>
+        </div>
+    </div>
+
+    <div class="barra-lateral">
+        <a href="index_pag1.php" class="p1">Recomendaciones</a>
+        <a href="index_pag2.php" class="p2">Preguntas frecuentes</a>
+        <a href="index_pag4.php" class="p3">Contacto</a>
+    </div>
+
+    <div class="contenido">
+        <p><button onclick="location.href='login_clientes.php'">Iniciar sesión como Cliente</button><img src="img/login_cliente2.png" alt="icono de inicio de sesión" width="40" height="40"></p>
+        <br>
+        <p><button onclick="location.href='login_admin.php'">Iniciar sesión como Administrador</button><img src="img/login_admin2.png" alt="icono de inicio de sesión" width="40" height="40"></p>
+    </div>
+    
+    <footer>
+        <div class="copyright">
+            &copy; Sara Lamas · ASIR 2
+        </div>
+    </footer>
+
+    <script>
+        function toggleModoOscuro() {
+            const body = document.body;
+            body.classList.toggle('modo-oscuro');
+            const modoOscuroActivado = body.classList.contains('modo-oscuro');
+            localStorage.setItem('modoOscuro', modoOscuroActivado);
+        }
+
+        // verificar el estado del modo oscuro al cargar la página
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const modoOscuroGuardado = localStorage.getItem('modoOscuro');
+            const body = document.body;
+            if (modoOscuroGuardado === 'true') {
+                body.classList.add('modo-oscuro');
+            } else {
+                body.classList.remove('modo-oscuro');
+            }
+
+            document.getElementById('modoOscuroBtn').addEventListener('click', toggleModoOscuro);
+        });
+    </script>
+
+    <style>
+        .modo-oscuro {
+            background-color: #121212;
+            color: #ffffff;
+        }
+    </style>
+</body>
+
+</html>
