@@ -2,20 +2,20 @@
 session_start();
 include 'conexion.php';
 
-// Verifico si el usuario tiene sesión iniciada
+// verifico si el usuario tiene sesión iniciada
 if (!isset($_SESSION['id_usuario'])) {
     header("location: index.php");
     exit();
 }
 
-// Verifico si se envió el formulario
+// verifico si se envió el formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id_ticket = $_GET['id_ticket'];
     $id_usuario = $_SESSION['id_usuario'];
     $comentario = $_POST['comentario'];
 
     try {
-        // Consulta para insertar el comentario añadido en la base de datos
+        // consulta para insertar en la base de datos el comentario añadido
         $sql_insert_comentario = "INSERT INTO comentarios_tickets (id_ticket, id_usuario, comentario, fecha_creacion)
                                   VALUES ('$id_ticket', '$id_usuario', '$comentario', NOW())";
 
@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-// Consulta para recoger información del ticket de la base de datos
+// consulta para recoger información del ticket de la base de datos
 $id_ticket = $_GET['id_ticket'];
 
 $info_ticket = "SELECT tickets.id_ticket, tickets.titulo, tickets.descripcion_ticket,
@@ -44,7 +44,7 @@ $info_ticket = "SELECT tickets.id_ticket, tickets.titulo, tickets.descripcion_ti
 
 $resultado_ticket_info = $conn->query($info_ticket);
 
-// Verifico si el ticket existe para recoger su información
+// verifico si el ticket existe
 if ($resultado_ticket_info->num_rows > 0) {
     $ticket_info = $resultado_ticket_info->fetch_assoc();
 } else {
@@ -52,10 +52,11 @@ if ($resultado_ticket_info->num_rows > 0) {
     exit();
 }
 
-// Consulta para obtener los comentarios del ticket actual
+// consulta para obtener de la bbdd los comentarios del ticket
 $info_comentarios = "SELECT * FROM comentarios_tickets WHERE id_ticket = $id_ticket ORDER BY fecha_creacion DESC";
 $resultado_comentarios = $conn->query($info_comentarios);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="es">

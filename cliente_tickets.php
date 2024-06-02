@@ -2,6 +2,7 @@
 session_start();
 include 'conexion.php';
 
+// verifico si un cliente tiene sesión iniciada
 if (!isset($_SESSION['id_cliente'])) {
     header("location: index.php");
     exit();
@@ -9,11 +10,11 @@ if (!isset($_SESSION['id_cliente'])) {
 
 $id_cliente = $_SESSION['id_cliente'];
 
-// Consulta para obtener el número total de tickets del cliente
+// consulta para obtener de la base de datos el número total de tickets del cliente
 $total_tickets_cliente = "SELECT COUNT(*) AS total_tickets FROM tickets WHERE id_cliente = '$id_cliente'";
 $resultado_total_tickets_cliente = $conn->query($total_tickets_cliente);
 
-// Recogemos información de la base de datos
+// consulta para recoger información del ticket
 $info = "SELECT tickets.id_ticket, tickets.titulo, tickets.fecha_creacion, tickets.estado, 
     tickets.nombre_usuario, tickets.descripcion_ticket, 
     categorias_ticket.categoria AS nombre_categoria, 
@@ -55,7 +56,7 @@ $resultado = $conn->query($info);
     </p>
 
     <?php
-    // Consulta para obtener el número de tickets del cliente
+    // consulta para obtener el número de tickets del cliente
     $total_tickets_cliente = "SELECT COUNT(*) AS total_tickets FROM tickets WHERE id_cliente = '$id_cliente'";
     $resultado_total_tickets_cliente = $conn->query($total_tickets_cliente);
 
@@ -77,6 +78,7 @@ $resultado = $conn->query($info);
     <br>
 
     <?php
+    // para mostrar la información del ticket
     if ($resultado->num_rows > 0) {
         while ($fila = $resultado->fetch_assoc()) {
             echo '<div class="contenedor-ticket">';

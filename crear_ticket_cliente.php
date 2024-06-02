@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $info_ticket = "INSERT INTO tickets (titulo, descripcion_ticket, estado, id_estado, prioridad, fecha_creacion, id_usuario, id_cliente, id_categoria, nombre_cliente, descripcion_cliente, telefono)
                 VALUES (?, ?, 'abierto', '1', ?, NOW(), ?, ?, ?, ?, ?, ?)";
 
-            // "sssiisssi" representa las variables introducidas, cada una es una letra. 
+            // en "sssiisssi" cada letra corresponde a una de las variables introducidas 
             // 's' indica que el parametro es string;  'i' indica que el parametro es integer.
             $declaracion_ticket = $conn->prepare($info_ticket);
             $declaracion_ticket->bind_param("sssiisssi", $titulo, $descripcion_ticket, $prioridad, $id_usuario, $id_cliente, $categoria, $nombre_cliente, $descripcion_cliente, $telefono);

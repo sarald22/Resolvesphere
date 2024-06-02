@@ -25,12 +25,13 @@
 
         $id_cliente = $_SESSION['id_cliente'];
         
-        // Si hay una sesión de cliente iniciada, se comparará el id del cliente en las tablas y se mostrará su información
+        // si hay una sesión de cliente iniciada, se comparará el id del cliente en las tablas y se mostrará su información
         $info = "SELECT * FROM clientes WHERE id_cliente = '$id_cliente'";
         $resultado = $conn->query($info);
 
         if ($resultado->num_rows == 1) {
             $fila = $resultado->fetch_assoc();
+            // mostramos la info del cliente
             echo '<div class="info-perfil">';
                 echo '<label for="nombre">ID:</label>';
                 echo '<span>' . $fila['id_cliente'] . '</span><br>';

@@ -2,7 +2,7 @@
 session_start();
 include 'conexion.php';
 
-// verifico si el usuario ed admin y tiene sesión iniciada
+// para verificar si el usuario es administrador y tiene sesión iniciada
 if (!isset($_SESSION['id_usuario']) || $_SESSION['rol'] !== 'administrador') {
     header("location: index.php");
     exit();
@@ -10,7 +10,7 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['rol'] !== 'administrador') {
 
 $id_usuario = $_SESSION['id_usuario'];
 
-// esta consulta es para seleccionar info de los tickets
+// esta consulta es para seleccionar información de la tabla de tickets
 $info_tickets = "SELECT tickets.id_ticket, tickets.titulo, tickets.estado, tickets.prioridad, 
                 tickets.fecha_creacion, tickets.nombre_usuario, tickets.nombre_cliente,
                 tickets.descripcion_ticket, 
@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $id_ticket = $_POST['id_ticket'];
         $nuevo_estado = $_POST['nuevo_estado'];
 
-        // actualiza el estado del ticket en la bbdd
+        // para actualizar el estado del ticket en la bbdd
         $t_actualizar_estado = "UPDATE tickets SET estado = '$nuevo_estado' WHERE id_ticket = $id_ticket";
         if ($conn->query($t_actualizar_estado) === TRUE) {
             echo '<div class="success-message">Estado del ticket actualizado correctamente.</div>';
@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $id_ticket = $_POST['id_ticket'];
         $nueva_categoria_id = $_POST['nueva_categoria'];
 
-        // actualiza la categoría del ticket en la bbdd
+        // // para actualizar la categoria del ticket en la bbdd
         $t_actualizar_categoria = "UPDATE tickets SET id_categoria = '$nueva_categoria_id' WHERE id_ticket = $id_ticket";
         if ($conn->query($t_actualizar_categoria) === TRUE) {
             echo '<div class="success-message">Categoría del ticket actualizada correctamente.</div>';
@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 
-// para clasificar los tickets segun el ID
+// consulta para seleccionar los tickets segun su estado
 $t_abiertos = "SELECT COUNT(*) AS total_abiertos FROM tickets WHERE estado = 'abierto' AND id_usuario = $id_usuario";
 $t_en_proceso = "SELECT COUNT(*) AS total_en_proceso FROM tickets WHERE estado = 'en_proceso' AND id_usuario = $id_usuario";
 $t_cerrados = "SELECT COUNT(*) AS total_cerrados FROM tickets WHERE estado = 'cerrado' AND id_usuario = $id_usuario";
@@ -64,7 +64,7 @@ $resultado_en_proceso = $conn->query($t_en_proceso);
 $resultado_cerrados = $conn->query($t_cerrados);
 $resultado_totales = $conn->query($t_totales);
 
-// para obtener los valores de los contadores y los almaceno en variables para mostrarlos
+
 $total_abiertos = $resultado_abiertos->fetch_assoc()['total_abiertos'];
 $total_en_proceso = $resultado_en_proceso->fetch_assoc()['total_en_proceso'];
 $total_cerrados = $resultado_cerrados->fetch_assoc()['total_cerrados'];
@@ -129,7 +129,7 @@ $total_tickets = $resultado_totales->fetch_assoc()['total_tickets'];
         <?php
         if ($resultado_tickets->num_rows > 0) {
             while ($row = $resultado_tickets->fetch_assoc()) {
-                echo '<div class="contenedor-ticket">';
+            echo '<div class="contenedor-ticket">';
 
                 echo '<div class="cabecera-ticket">ID: ' . $row['id_ticket'] . ' | Título: ' . $row['titulo'] . '</div>';
                 echo '<div class="detalles-ticket"> Nombre Cliente: ' . $row['nombre_cliente'] . '</div>';
@@ -139,6 +139,7 @@ $total_tickets = $resultado_totales->fetch_assoc()['total_tickets'];
                     } else {
                         echo 'No disponible';
                     }
+                // barra superior de clasificación de tickets
                 echo '</div>';
                 echo '<div class="detalles-ticket"> Categoría: ' . $row['categoria'] . '</div>';
                 echo '<div class="detalles-ticket"> Descripción: ' . $row['descripcion_ticket'] . '</div>';
@@ -151,63 +152,63 @@ $total_tickets = $resultado_totales->fetch_assoc()['total_tickets'];
 
                     // Formulario para cambiar el estado del ticket
                     echo '<div class="formulario-estado">';
-                    echo '<form method="POST" action="">';
-                        echo '<input type="hidden" name="id_ticket" value="' . $row['id_ticket'] . '">';
+                        echo '<form method="POST" action="">';
+                            echo '<input type="hidden" name="id_ticket" value="' . $row['id_ticket'] . '">';
 
-                        echo '<label for="nuevo_estado" style="display: inline-block; margin-right: 5px;">Cambiar Estado:</label>';
+                            echo '<label for="nuevo_estado" style="display: inline-block; margin-right: 5px;">Cambiar Estado:</label>';
                             echo '<select name="nuevo_estado" id="nuevo_estado" style="display: inline-block;">';
-                            echo '<option value="abierto">Abierto</option>';
-                            echo '<option value="en_proceso">En Proceso</option>';
-                            echo '<option value="cerrado">Cerrado</option>';
+                                echo '<option value="abierto">Abierto</option>';
+                                echo '<option value="en_proceso">En Proceso</option>';
+                                echo '<option value="cerrado">Cerrado</option>';
                             echo '</select>';
-            
-                        echo '<button type="submit" class="enlace-estado">Cambiar</button>';
-                    echo '</form>';
-                echo '</div>'; // Cierre div formulario-estado
-
+                
+                            echo '<button type="submit" class="enlace-estado">Cambiar</button>';
+                        echo '</form>';
+                    echo '</div>';
 
 
                 // Formulario para cambiar la categoría del ticket
-                echo '<div class="formulario-categoria">';
-                    echo '<form method="POST" action="">';
-                        echo '<input type="hidden" name="id_ticket" value="' . $row['id_ticket'] . '">';
+                    echo '<div class="formulario-categoria">';
+                        echo '<form method="POST" action="">';
+                            echo '<input type="hidden" name="id_ticket" value="' . $row['id_ticket'] . '">';
 
                             echo '<label for="nueva_categoria" style="display: inline-block; margin-right: 5px;">Cambiar Categoría:</label>';
                             echo '<select name="nueva_categoria" id="nueva_categoria" style="display: inline-block;">';
-                            echo '<option value="hardware">Hardware</option>';
-                            echo '<option value="software">Software</option>';
-                            echo '<option value="conexion">Conexión</option>';
+                                echo '<option value="hardware">Hardware</option>';
+                                echo '<option value="software">Software</option>';
+                                echo '<option value="conexion">Conexión</option>';
                             echo '</select>';
 
-                        echo '<button type="submit" class="enlace-categoria">Cambiar</button>';
-                    echo '</form>';
-                echo '</div>'; // Cierre div formulario-categoria
+                            echo '<button type="submit" class="enlace-categoria">Cambiar</button>';
+                        echo '</form>';
+                    echo '</div>';
 
 
                 echo '<br>';
+                
                 // Formulario para cambiar la prioridad del ticket
-                echo '<div class="formulario-prioridad">';
-                echo '<form method="POST" action="">';
-                    echo '<input type="hidden" name="id_ticket" value="' . $row['id_ticket'] . '">';
+                    echo '<div class="formulario-prioridad">';
+                        echo '<form method="POST" action="">';
+                            echo '<input type="hidden" name="id_ticket" value="' . $row['id_ticket'] . '">';
 
-                    echo '<label for="nueva_prioridad" style="display: inline-block; margin-right: 5px;">Cambiar Prioridad:</label>';
-                        echo '<select name="nueva_prioridad" id="nueva_prioridad" style="display: inline-block;">';
-                            echo '<option value="baja">Baja</option>';
-                            echo '<option value="media">Media</option>';
-                            echo '<option value="alta">Alta</option>';
-                            echo '<option value="muy_alta">Muy alta</option>';
-                        echo '</select>';
+                            echo '<label for="nueva_prioridad" style="display: inline-block; margin-right: 5px;">Cambiar Prioridad:</label>';
+                            echo '<select name="nueva_prioridad" id="nueva_prioridad" style="display: inline-block;">';
+                                echo '<option value="baja">Baja</option>';
+                                echo '<option value="media">Media</option>';
+                                echo '<option value="alta">Alta</option>';
+                                echo '<option value="muy_alta">Muy alta</option>';
+                            echo '</select>';
 
-                    echo '<button type="submit" class="enlace-prioridad">Cambiar</button>';
-                echo '</form>';
-                echo '</div>'; // Cierre div formulario-prioridad
+                            echo '<button type="submit" class="enlace-prioridad">Cambiar</button>';
+                        echo '</form>';
+                    echo '</div>';
 
 
 
                 echo '<br>';
                 echo '<a class="enlace-agregar-comentario" href="agregar_comentarios.php?id_ticket=' . $row['id_ticket'] . '"> · Añadir comentario · </a>';
-            echo '</div>'; // Cierre div acciones-ticket
-            echo '</div>'; // Cierre div contenedor-ticket
+            echo '</div>'; // contenedor acciones ticket
+        echo '</div>'; // contenedor general tickets
 
         }
     } else {

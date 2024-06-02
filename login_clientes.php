@@ -8,6 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id_cliente = $_POST['id_cliente'];
     $dni = $_POST['dni'];
 
+// recogemos la informacion de la tabla de clientes 
     $info = "SELECT * FROM clientes WHERE id_cliente = ? AND dni = ?";
     $declaracion = $conn->prepare($info);
     $declaracion->bind_param("is", $id_cliente, $dni);
@@ -52,6 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     <?php if (isset($error)) echo "<p class='error-message'>$error</p>"; ?>
+<!-- formulario para iniciar sesion -->
     <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
         <label for="id_cliente">ID:</label>
         <input type="text" id="id_cliente" name="id_cliente" required><br><br>

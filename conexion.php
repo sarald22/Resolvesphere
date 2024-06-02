@@ -1,5 +1,5 @@
 <?php
-//archivo de conexión con la bbdd. Por defecto, podemos conectarnos al usuario 'root' sin necesidad de contraseña:
+//archivo de conexión con la base de datos. Por defecto, podemos conectarnos al usuario 'root' sin necesidad de contraseña:
 
 $servername = "localhost";
 $username = "root";

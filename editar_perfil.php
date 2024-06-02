@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $departamento = $_POST['departamento'];
 
-    // para actualizar la informacion en la bbdd
+    // consulta para actualizar la informacion en la bbdd
     $info_actualizacion = "UPDATE usuarios SET nombre = '$nombre', email = '$email', departamento = '$departamento' WHERE id_usuario = '$id_usuario'";
     if ($conn->query($info_actualizacion) === TRUE) {
         echo "Datos actualizados correctamente.";
@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-// para obtener los datos actuales del usuario
+// consulta para obtener los datos actuales del usuario
 $info = "SELECT * FROM usuarios WHERE id_usuario = '$id_usuario'";
 $resultado = $conn->query($info);
 

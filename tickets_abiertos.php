@@ -25,9 +25,6 @@ $info_tickets = "SELECT tickets.id_ticket, tickets.titulo, tickets.estado, ticke
 
 $resultado_tickets = $conn->query($info_tickets);
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // vacío por el momento; para actualizar estado y categoria
-}
 ?>
 
 <!DOCTYPE html>
@@ -97,7 +94,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo '</div>'; // Cierre div formulario-estado
 
 
-
                 // Formulario para cambiar la categoría del ticket
                 echo '<div class="formulario-categoria">';
                     echo '<form method="POST" action="">';
@@ -117,7 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 echo '<a class="enlace-agregar-comentario" href="agregar_comentarios.php?id_ticket=' . $fila['id_ticket'] . '"> · Agregar Comentario · </a>';
 
-                echo '</div>'; // Cierre div acciones-ticket
+                echo '</div>'; // Cierre div acciones
                 
                 echo '</div>'; // Cierre div contenedor-ticket
             }

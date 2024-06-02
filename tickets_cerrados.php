@@ -2,7 +2,7 @@
 session_start();
 include 'conexion.php';
 
-// Verificar si el usuario tiene sesión iniciada y es administrador
+// verificar si el usuario tiene sesión iniciada y es administrador
 if (!isset($_SESSION['id_usuario']) || $_SESSION['rol'] !== 'administrador') {
     header("location: index.php");
     exit();
@@ -25,9 +25,6 @@ $info_tickets = "SELECT tickets.id_ticket, tickets.titulo, tickets.estado, ticke
 
 $resultado_tickets = $conn->query($info_tickets);
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {    
-    // vacío por el momento; para actualizar estado y categoria
-}
 ?>
 
 <!DOCTYPE html>
@@ -116,9 +113,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 echo '<a class="enlace-agregar-comentario" href="agregar_comentarios.php?id_ticket=' . $fila['id_ticket'] . '"> · Agregar Comentario · </a>';
 
-                echo '</div>'; // Cierre div ticket-actions
+                echo '</div>'; // Cierre div acciones
                 
-                echo '</div>'; // Cierre div ticket-contenedor
+                echo '</div>'; // Cierre div contenedor ticket
             }
         } else {
             echo 'No hay tickets disponibles.';

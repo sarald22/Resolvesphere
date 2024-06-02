@@ -3,7 +3,7 @@
 </div>
 
 <script>
-
+       
 function alternarModoOscuro() {
     const cuerpo = document.body;
     cuerpo.classList.toggle('modo-oscuro');

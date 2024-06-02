@@ -1,14 +1,14 @@
 <?php
     session_start();
     include 'conexion.php';
-    // Verifico si hay una sesión activa
+    // verifico si hay una sesión activa
     if (!isset($_SESSION['id_usuario'])) {
         header("location: index.php");
         exit();
     }
 
     $id_usuario = $_SESSION['id_usuario'];
-    // Si hay una sesión de cliente iniciada, se comparará el id del usuario en las tablas y se mostrará su información
+    // si hay una sesión de cliente iniciada, se comparará el id del usuario en las tablas y se mostrará su información
     $info = "SELECT * FROM usuarios WHERE id_usuario = '$id_usuario'";
     $resultado = $conn->query($info);
 
@@ -31,6 +31,7 @@
     <div class="contenedor-perfil">
         <h1 class="titulo-perfil">Mi perfil</h1>
         <div class="info-perfil">
+            <!-- mostramos la info del administrador -->
             <p><strong>Nombre:</strong> <?php echo $fila['nombre']; ?></p>
             <p><strong>Email:</strong> <?php echo $fila['email']; ?></p>
             <p><strong>Rol:</strong> <?php echo $fila['rol']; ?></p>

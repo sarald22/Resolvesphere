@@ -2,7 +2,6 @@
 session_start();
 include 'conexion.php';
 
-// Definir variables iniciales de sesión si no están definidas
 if (!isset($_SESSION['id_cliente'])) {
     $_SESSION['id_cliente'] = 1;
     $_SESSION['nombre_cliente'] = 'Nombre del Cliente';
@@ -12,35 +11,33 @@ if (!isset($_SESSION['id_cliente'])) {
 }
 
 
-// Obtener la lista de clientes de la base de datos
+// para obtener la lista de clientes de la base de datos
 $info_clientes = "SELECT id_cliente, nombre FROM clientes";
 $resultado_clientes = $conn->query($info_clientes);
 
-// Verificar si la consulta fue exitosa
 if ($resultado_clientes) {
     $clientes_opciones = "";
-    // Construir un array de opciones para el menú desplegable
+    // lista de opciones para el desplegable de la opción de elegir cliente
     while ($fila_cliente = $resultado_clientes->fetch_assoc()) {
         $clientes_opciones .= '<option value="' . $fila_cliente['id_cliente'] . '">' . $fila_cliente['nombre'] . '</option>';
     }
 } else {
-    // En caso de error en la consulta
+    // en caso de error, mostrar mensaje:
     echo "Error al obtener la lista de clientes: " . $conn->error;
 }
 
-// Procesar el formulario si se envía
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Verificar que las variables necesarias estén definidas y no estén vacías
+    // verificar que las variables necesarias estén definidas y no vacías
     if (isset($_SESSION['id_usuario'], $_POST['titulo'], $_POST['categoria'], $_POST['descripcion_ticket'])
         && !empty($_POST['titulo']) && !empty($_POST['categoria']) && !empty($_POST['descripcion_ticket'])
     ) {
-        // Obtener información del ticket
+        // para obtener información del ticket
         $id_usuario = $_SESSION['id_usuario'];
         $titulo = $_POST['titulo'];
         $categoria = $_POST['categoria'];
         $descripcion_ticket = $_POST['descripcion_ticket'];
 
-        // Obtener información del cliente
+        // para obtener información del cliente
         $id_cliente = isset($_SESSION['id_cliente']) ? $_SESSION['id_cliente'] : null;
         $info_cliente = "SELECT * FROM clientes WHERE id_cliente = ?";
         $declaracion_cliente = $conn->prepare($info_cliente);
@@ -55,10 +52,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $telefono = $fila_cliente['telefono'];
             $prioridad = $fila_cliente['prioridad'];
 
-            // Insertar información del formulario en la base de datos
+            // consulta para insertar la información del formulario en la base de datos
             $info_ticket = "INSERT INTO tickets (titulo, descripcion_ticket, estado, id_estado, prioridad, fecha_creacion, id_usuario, id_cliente, id_categoria, nombre_cliente, descripcion_cliente, telefono)
                 VALUES (?, ?, 'abierto', '1', ?, NOW(), ?, ?, ?, ?, ?, ?)";
             $declaracion_ticket = $conn->prepare($info_ticket);
+
+            // cada letra de 'sssiisssi' corresponde a una de las variables siguientes, siendo S 'string' y siendo I 'integer'
             $declaracion_ticket->bind_param("sssiisssi", $titulo, $descripcion_ticket, $prioridad, $id_usuario, $id_cliente, $categoria, $nombre_cliente, $descripcion_cliente, $telefono);
 
             if ($declaracion_ticket->execute()) {

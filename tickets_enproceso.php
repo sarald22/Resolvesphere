@@ -25,9 +25,6 @@ $info_tickets = "SELECT tickets.id_ticket, tickets.titulo, tickets.estado, ticke
 
 $resultado_tickets = $conn->query($info_tickets);
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // vacío por el momento; para actualizar estado y categoria
-}
 ?>
 
 <!DOCTYPE html>

@@ -7,6 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id_usuario = $_POST['id_usuario'];
     $contrasena = $_POST['contrasena'];
 
+    //consulta para seleccionar en la tabla usuarios la informacion
     $sql = "SELECT * FROM usuarios WHERE id_usuario = ? AND contrasena = ?";
     $declaracion = $conn->prepare($sql);
     $declaracion->bind_param("is", $id_usuario, $contrasena);
@@ -49,7 +50,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     <h1>Administrador<img src="img/login_admin2.png" alt="loginadmin" width="50" height="50"></h1>
     <?php if (isset($error)) echo "<p class='error-message'>$error</p>"; ?>
-
+    
+<!-- formulario para iniciar sesion -->
     <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
         <label for="id_usuario">ID:</label>
         <input type="text" id="id_usuario" name="id_usuario" required><br><br>
