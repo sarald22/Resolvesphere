@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <label for="id_cliente">ID:</label>
         <input type="text" id="id_cliente" name="id_cliente" required><br><br>
         <label for="dni">Contraseña:</label>
-        <input type="text" id="dni" name="dni" required><br><br>
+        <input type="password" id="dni" name="dni" required><br><br>
         <button type="submit">Iniciar Sesión</button>
     </form>
     <br>
