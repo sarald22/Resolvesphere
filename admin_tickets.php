@@ -2,7 +2,7 @@
 session_start();
 include 'conexion.php';
 
-// para verificar si el usuario es administrador y tiene sesión iniciada
+// Verificar si el usuario es administrador y tiene sesión iniciada
 if (!isset($_SESSION['id_usuario']) || $_SESSION['rol'] !== 'administrador') {
     header("location: index.php");
     exit();
@@ -10,7 +10,7 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['rol'] !== 'administrador') {
 
 $id_usuario = $_SESSION['id_usuario'];
 
-// esta consulta es para seleccionar información de la tabla de tickets
+// Consulta para seleccionar información de la tabla de tickets
 $info_tickets = "SELECT tickets.id_ticket, tickets.titulo, tickets.estado, tickets.prioridad, 
                 tickets.fecha_creacion, tickets.nombre_usuario, tickets.nombre_cliente,
                 tickets.descripcion_ticket, 
@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST['nuevo_estado'])) {
             $nuevo_estado = $_POST['nuevo_estado'];
 
-            // para actualizar el estado del ticket en la bbdd
+            // Actualizar el estado del ticket en la base de datos
             $t_actualizar_estado = "UPDATE tickets SET id_estado = (SELECT id_estado FROM estado_tickets WHERE estado = '$nuevo_estado') WHERE id_ticket = $id_ticket";
             if ($conn->query($t_actualizar_estado) === TRUE) {
                 echo '<div class="success-message">Estado del ticket actualizado correctamente.</div>';
@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST['nueva_categoria'])) {
             $nueva_categoria_id = $_POST['nueva_categoria'];
 
-            // para actualizar la categoría del ticket en la bbdd
+            // Actualizar la categoría del ticket en la base de datos
             $t_actualizar_categoria = "UPDATE tickets SET id_categoria = '$nueva_categoria_id' WHERE id_ticket = $id_ticket";
             if ($conn->query($t_actualizar_categoria) === TRUE) {
                 echo '<div class="success-message">Categoría del ticket actualizada correctamente.</div>';
@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST['nueva_prioridad'])) {
             $nueva_prioridad_id = $_POST['nueva_prioridad'];
 
-            // para actualizar la prioridad del ticket en la bbdd
+            // Actualizar la prioridad del ticket en la base de datos
             $t_actualizar_prioridad = "UPDATE tickets SET id_prioridad = (SELECT id_prioridad FROM prioridades WHERE prioridad = '$nueva_prioridad_id') WHERE id_ticket = $id_ticket";
             if ($conn->query($t_actualizar_prioridad) === TRUE) {
                 echo '<div class="success-message">Prioridad del ticket actualizada correctamente.</div>';
@@ -64,10 +64,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo '<div class="error-message">Error al actualizar la prioridad del ticket.</div>';
             }
         }
+
+        if (isset($_POST['nuevo_usuario'])) {
+            $nuevo_usuario_id = $_POST['nuevo_usuario'];
+
+            // Actualizar el usuario asignado al ticket en la base de datos
+            $t_actualizar_usuario = "UPDATE tickets SET id_usuario = '$nuevo_usuario_id' WHERE id_ticket = $id_ticket";
+            if ($conn->query($t_actualizar_usuario) === TRUE) {
+                echo '<div class="success-message">Usuario asignado al ticket actualizado correctamente.</div>';
+            } else {
+                echo '<div class="error-message">Error al actualizar el usuario asignado al ticket: ' . $conn->error . '</div>';
+            }
+        }
     }
 }
 
-// consulta para seleccionar los tickets según su estado
+// Consulta para seleccionar los tickets según su estado
 $t_abiertos = "SELECT COUNT(*) AS total_abiertos FROM tickets WHERE id_usuario = $id_usuario AND id_estado = (SELECT id_estado FROM estado_tickets WHERE estado = 'abierto')";
 $t_en_proceso = "SELECT COUNT(*) AS total_en_proceso FROM tickets WHERE id_usuario = $id_usuario AND id_estado = (SELECT id_estado FROM estado_tickets WHERE estado = 'en_proceso')";
 $t_cerrados = "SELECT COUNT(*) AS total_cerrados FROM tickets WHERE id_usuario = $id_usuario AND id_estado = (SELECT id_estado FROM estado_tickets WHERE estado = 'cerrado')";
@@ -137,7 +149,7 @@ $total_tickets = $resultado_totales->fetch_assoc()['total_tickets'];
         <?php
         if ($resultado_tickets->num_rows > 0) {
             while ($row = $resultado_tickets->fetch_assoc()) {
-            echo '<div class="contenedor-ticket">';
+                echo '<div class="contenedor-ticket">';
 
                 echo '<div class="cabecera-ticket">ID: ' . $row['id_ticket'] . ' | Título: ' . $row['titulo'] . '</div>';
                 echo '<div class="detalles-ticket"> Nombre Cliente: ' . $row['nombre_cliente'] . '</div>';
@@ -147,7 +159,7 @@ $total_tickets = $resultado_totales->fetch_assoc()['total_tickets'];
                     } else {
                         echo 'No disponible';
                     }
-                // barra superior de clasificación de tickets
+
                 echo '</div>';
                 echo '<div class="detalles-ticket"> Categoría: ' . $row['categoria'] . '</div>';
                 echo '<div class="detalles-ticket"> Descripción: ' . $row['descripcion_ticket'] . '</div>';
@@ -158,7 +170,7 @@ $total_tickets = $resultado_totales->fetch_assoc()['total_tickets'];
 
                 echo '<div class="acciones-ticket">';
 
-                    // Formulario para cambiar el estado del ticket
+                // Formulario para cambiar el estado del ticket
                     echo '<div class="formulario-estado">';
                         echo '<form method="POST" action="">';
                             echo '<input type="hidden" name="id_ticket" value="' . $row['id_ticket'] . '">';
@@ -169,7 +181,7 @@ $total_tickets = $resultado_totales->fetch_assoc()['total_tickets'];
                                 echo '<option value="en_proceso">En Proceso</option>';
                                 echo '<option value="cerrado">Cerrado</option>';
                             echo '</select>';
-                
+
                             echo '<button type="submit" class="enlace-estado">Cambiar</button>';
                         echo '</form>';
                     echo '</div>';
@@ -207,17 +219,41 @@ $total_tickets = $resultado_totales->fetch_assoc()['total_tickets'];
                         echo '</form>';
                     echo '</div>';
 
-                echo '<br>';
-                echo '<a class="enlace-agregar-comentario" href="agregar_comentarios.php?id_ticket=' . $row['id_ticket'] . '"> · Añadir comentario · </a>';
-            echo '</div>'; // contenedor acciones ticket
-        echo '</div>'; // contenedor general tickets
+                    // Formulario para cambiar el usuario asignado al ticket
+                    echo '<div class="formulario-usuario">';
+                        echo '<form method="POST" action="">';
+                            echo '<input type="hidden" name="id_ticket" value="' . $row['id_ticket'] . '">';
 
+                            echo '<label for="nuevo_usuario" style="display: inline-block; margin-right: 5px;">Cambiar Asignado:</label>';
+                            echo '<select name="nuevo_usuario" id="nuevo_usuario" style="display: inline-block;">';
+                                
+                                // Obtener usuarios disponibles
+                                $usuarios_disponibles_query = "SELECT id_usuario, nombre FROM usuarios";
+                                $result_usuarios = $conn->query($usuarios_disponibles_query);
+                                
+                                if ($result_usuarios->num_rows > 0) {
+                                    while ($usuario = $result_usuarios->fetch_assoc()) {
+                                        echo '<option value="' . $usuario['id_usuario'] . '">' . $usuario['nombre'] . '</option>';
+                                    }
+                                }
+                            
+                            echo '</select>';
+
+                            echo '<button type="submit" class="enlace-usuario">Cambiar</button>';
+                        echo '</form>';
+                    echo '</div>';
+
+                    echo '<br>';
+                    echo '<a class="enlace-agregar-comentario" href="agregar_comentarios.php?id_ticket=' . $row['id_ticket'] . '"> · Añadir comentario · </a>';
+                echo '</div>'; // contenedor acciones ticket
+                echo '</div>'; // contenedor general tickets
+            }
+        } else {
+            echo 'No hay tickets disponibles.';
         }
-    } else {
-        echo 'No hay tickets disponibles.';
-    }
-    ?>
+        ?>
     </div>
 </body>
 
 </html>
+

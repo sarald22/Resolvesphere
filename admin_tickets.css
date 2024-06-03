@@ -1,0 +1,255 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #000000;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.barra-lateral {
+    position: fixed;
+    width: 230px;
+    background-color: darkorange;
+    height: 100vh;
+    color: #fff;
+    padding-top: 20px;
+}
+
+.barra-lateral a {
+    display: block;
+    padding: 10px;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin-left: 10px;
+}
+
+.barra-lateral a:hover {
+    background-color: rgb(211, 119, 7);
+}
+
+.barra-lateral h2 {
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+.barra-lateral ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.barra-lateral ul li {
+    margin-bottom: 10px;
+}
+
+.barra-lateral ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.contenido {
+    flex-grow: 1;
+    padding: 20px;
+    margin-left: 220px;
+}
+
+h1 {
+    text-align: center;
+    color: #ff7f00;
+}
+
+.cabecera-ticket {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.contenedor-ticket {
+    background-color: #fce7da;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.418);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.detalles-ticket {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.acciones-ticket {
+    margin-top: 5px;
+}
+
+.enlace-agregar-comentario {
+    color: rgb(255, 94, 0);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.edit-link,
+.status-link,
+.category-link {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #000;
+    background-color: #ffbb3e;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.edit-link:hover,
+.status-link:hover,
+.category-link:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.formulario-estado,
+.formulario-categoria {
+    margin-top: 10px;
+}
+
+.formulario-estado label,
+.formulario-categoria label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.formulario-estado select,
+.formulario-categoria select {
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.formulario-estado button,
+.formulario-categoria button {
+    margin-top: 5px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+
+.enlace-prioridad {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #000;
+    background-color: #ffbb3e;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.enlace-prioridad:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.enlace-estado {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #000;
+    background-color: #ffa500;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.enlace-estado:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.enlace-categoria {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #000;
+    background-color: #ffa500;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.enlace-categoria:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.enlace-usuario {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #000;
+    background-color: #ffa500;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.enlace-usuario:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+.enlace-prioridad {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #000;
+    background-color: #ffa500;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.enlace-prioridad:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.contenedor-botones {
+    margin-bottom: 20px;
+}
+
+.boton-perfil,
+.boton-crear-ticket,
+.boton-inicio {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 10px 20px;
+    background-color: #ffa500;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.boton-perfil:hover,
+.boton-crear-ticket:hover,
+.boton-inicio:hover {
+    background-color: darkorange;
+}
+
+
+.contenedor-contador {
+    background-color: #ffc14d91;
+    color: #000000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-around;
+}
+
+.contenedor-contador p {
+    margin: 0;
+    font-size: 16px;
+}
+
+.contenedor-contador span {
+    font-weight: bold;
+    margin-left: 5px;
+    color: #ff7f00;
+}
+
+.ticket-counter {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 30px;
+}
