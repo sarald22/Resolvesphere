@@ -22,7 +22,8 @@ $info = "SELECT tickets.id_ticket, tickets.titulo, tickets.fecha_creacion, ticke
     FROM tickets
     LEFT JOIN categorias_ticket ON tickets.id_categoria = categorias_ticket.id_categoria
     LEFT JOIN prioridades ON tickets.id_prioridad = prioridades.id_prioridad
-    WHERE id_cliente = '$id_cliente'";
+    WHERE id_cliente = '$id_cliente'
+    ORDER BY tickets.fecha_creacion DESC"; // para que se ordenen por recientemente creados
 
 $resultado = $conn->query($info);
 ?>
@@ -83,7 +84,7 @@ $resultado = $conn->query($info);
         while ($fila = $resultado->fetch_assoc()) {
             echo '<div class="contenedor-ticket">';
                 echo '<div class="encabezado-ticket">ID: ' . $fila['id_ticket'] . ' | Título: ' . $fila['titulo'] . '</div>';
-                echo '<div class="detalles-ticket">Fecha Creación: ' . $fila['fecha_creacion'] . '</div>';
+                echo '<div class="detalles-ticket">Creación: ' . $fila['fecha_creacion'] . '</div>';
                 echo '<div class="detalles-ticket">Título: ' . $fila['titulo'] . '</div>';
                 echo '<div class="detalles-ticket">Estado: ' . $fila['estado'] . '</div>';
                 echo '<div class="detalles-ticket">Asignado a: ' . $fila['nombre_usuario'] . '</div>';
